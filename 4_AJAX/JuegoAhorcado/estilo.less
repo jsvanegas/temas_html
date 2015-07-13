@@ -1,0 +1,122 @@
+@colorFondo:#333;
+@colorSobra:#121212;
+@blanco:#FFF;
+
+body{
+	background-color:@colorFondo;
+	color: @colorSobra;
+}
+
+#contenedor{
+	margin:0 auto;
+	width: 960px;
+	box-shadow: 0px 0px 15px @colorSobra;
+	background-color: @blanco;
+
+	header{
+		height: 100px;
+		padding: 15px 0px 10px 20px;
+		background-color: #EDEDED;
+		.bordeInferiorRound();
+		h1{
+			font-family: tahoma, verdana, sans-serif;
+			color: @blanco;
+			text-shadow:5px 5px 10px #A80;
+		}
+	}
+
+	div#navegacion{
+		margin:0 auto;
+		width: 890px;
+		border: solid 2px #000;
+		text-align: center;
+		nav{
+			ul{
+				li{
+					list-style: none;
+					//float: left;
+					display: inline;
+					padding: 2px 5px 3px 5px;
+					border-left:solid 2px #333;
+
+					a{
+						text-decoration: none;
+					}
+				}
+///
+				:first-child{
+					border:none;
+				}
+			}
+		}
+	}
+
+	div#contenidos{
+		margin:0 auto;
+		width: 900px;
+
+		div#contenidoIzq{
+			float:left;
+			width: 600px;
+			padding: 20px;
+
+			div#slider{
+				border:solid 2px #333;
+				width: 100%;
+				height: 100px;
+				margin-bottom: 10px;
+			}
+			section#articulos{
+
+				article.articulo{
+					border-bottom: solid 2px #333;
+					margin-bottom: 20px;
+					div.divImagen{
+						float: left;
+						width: 60px;
+						border: solid 2px #333;
+						img{
+							width: 50px;
+							height: 50px;
+						}
+					}
+					div.divTexto{
+						float: left;
+						width: 520px;
+						border: solid 2px #333;
+						h3{
+							color:#333;
+							display: block;
+							margin:0px;
+							padding: 0px;
+						}
+						p{
+							margin-top: 5px;
+						}
+					}
+				}
+
+			}
+		}
+		div#contenidoDer{
+
+		}
+	}
+
+	footer{
+		clear:both;
+	}
+}
+
+
+.bordeInferiorRound(){
+	border-radius:0px 0px 30px 30px;
+	border:solid 2px #EDEDED;
+}
+
+.limpiar{
+	clear: both;
+	background-color: #FFF;
+	color: #FFF;
+	border: none;
+}

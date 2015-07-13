@@ -1,0 +1,100 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="script/jquery-1.7.2.min.js"></script>
+	<style type="text/css">
+		body{
+			font-family: Arial, "MS Trebuchet", sans-serif;
+			font-size:12px;
+		}
+
+		.filaSombra{
+			background-color: #666;
+		}
+
+		.columnaSobra{
+			background-color: #333;
+			color: #FFF;
+
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th id="header1">Titulo 1</th>
+				<th id="header2">Titulo 2</th>
+				<th id="header3">Titulo 3</th>
+				<th id="header4">Titulo 4</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td header="header1">Item 1</td>
+				<td header="header2">Item 2</td>
+				<td header="header3">Item 3</td>
+				<td header="header4">Item 4</td>
+			</tr>
+			<tr>
+				<td header="header1">Item 1</td>
+				<td header="header2">Item 2</td>
+				<td header="header3">Item 3</td>
+				<td header="header4">Item 4</td>
+			</tr>
+			<tr>
+				<td header="header1">Item 1</td>
+				<td header="header2">Item 2</td>
+				<td header="header3">Item 3</td>
+				<td header="header4">Item 4</td>
+			</tr>
+			<tr>
+				<td header="header1">Item 1</td>
+				<td header="header2">Item 2</td>
+				<td header="header3">Item 3</td>
+				<td header="header4">Item 4</td>
+			</tr>
+			<tr>
+				<td header="header1">Item 1</td>
+				<td header="header2">Item 2</td>
+				<td header="header3">Item 3</td>
+				<td header="header4">Item 4</td>
+			</tr>
+			<tr>
+				<td header="header1">Item 1</td>
+				<td header="header2">Item 2</td>
+				<td header="header3">Item 3</td>
+				<td header="header4">Item 4</td>
+			</tr>
+			<tr>
+				<td header="header1">Item 1</td>
+				<td header="header2">Item 2</td>
+				<td header="header3">Item 3</td>
+				<td header="header4">Item 4</td>
+			</tr>
+			<tr>
+				<td header="header1">Item 1</td>
+				<td header="header2">Item 2</td>
+				<td header="header3">Item 3</td>
+				<td header="header4">Item 4</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script>
+		(function(){
+			$('table tbody tr:odd').addClass('filaSombra');
+
+			$('th').on('click', function(){
+				$('td.columnaSobra').removeClass('columnaSobra');
+				$('td[header="'+$(this).attr('id')+'"]')
+					.addClass('columnaSobra')
+					.each(function(i, item){
+						console.log($(item).text()+" "+i);
+					});
+			});
+
+		})();
+	</script>
+</body>
+</html>

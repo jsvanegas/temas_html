@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        #result
+        {
+            width:90%;
+            border:dashed 2px #AA3300;
+            margin:0 auto;
+            padding:10px;
+        }
+        
+        .item
+        {
+            width:150px;
+            height:80px;
+            border:dashed 2px #999;
+            float:left;    
+            margin:5px;
+            padding:3px 3px 3px 7px;
+        }
+        
+        .item span, .item a
+        {
+            display:block;    
+        }
+        
+        .item span:first-child
+        {
+            font-weight:bold;    
+        }
+        
+        .limpiar
+        {
+            clear:both;
+            opacity:0;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="result">
+        <hr class="limpiar" />
+    </div>
+
+    <script type="text/javascript">
+        (function () {
+
+            $.ajax({
+                url: 'Servidor.ashx',
+                type: 'GET',
+                contentType: 'JSON',
+                success: function (data) {
+                    var datosJson = JSON.parse(data);
+
+                    $(datosJson).each(function (i, item) {
+                        var div = $('<div>').addClass('item');
+                        div.append($('<span>').text(item.nombre + ' ' + item.apellido));
+                        div.append($('<span>').text(item.edad + ' años'));
+                        div.append( $('<a>').attr({ 
+                                                    href:'mailto:'+item.correo, 
+                                                    tittle:'enviar correo a '+item.nombre+' '+item.apellido   
+                                             }).text('enviar correo') );
+                        div.insertBefore('#result hr.limpiar');
+
+                    });
+
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+
+            });
+
+        })();
+    </script>
+</body>
+</html>

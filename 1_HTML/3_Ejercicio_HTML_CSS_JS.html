@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+		div#contenedor{
+			/*centrar*/
+			margin:0 auto;
+			border:solid 2px #333;
+			width:90%;
+			min-height:100px;
+		}
+
+		.divCreado{
+			width:300px;
+			height:100px;
+			background-color: #F00;
+			margin:10px;
+			float:left;
+		}
+
+		.divCreado h2{
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-o-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		.divCreado:hover{
+			background-color: #0A0;
+			cursor:pointer;
+		}
+
+		.limpiar{
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<input id="btn1" value="Crear Div" type="button">
+	<input id="btn2" value="Limpiar Divs" type="button">
+	<div id="contenedor">
+		<hr class="limpiar">
+		<div>division normal</div>
+	</div>
+	<script type="text/javascript">
+		var $ = document;
+		var c = $.getElementById("contenedor");
+
+		(function(){
+			var crearDiv = function(){
+			
+				//crear la division
+				var div = $.createElement("div");
+				//asignar la clase de CSS
+				div.className = "divCreado";
+				//agregar la propiedad data-count
+				div.setAttribute("data-count",0);
+
+				//se crea un h2 para la division
+				var h2 = $.createElement("h2");
+				//se agrega a la division
+				div.appendChild(h2);
+
+				//en el evento click de la division se ejecuta esta funcion
+				div.onclick = function(e){
+					//_d es equivalente a la division donde se presiono click
+					var _d = e.currentTarget;
+
+					var x = parseInt(_d.attributes[1].value);
+					
+					_d.attributes[1].value = ++x;
+
+					//se busca el h2 dentro de la division y se cambia su valor
+					_d.getElementsByTagName("h2")[0].textContent = "Clickeado: "+ (x);
+
+					_d.attributes[1].value=x;
+				}
+
+				var hr = c.getElementsByClassName("limpiar")[0];
+
+				c.insertBefore(div, hr);
+			}
+			$.getElementById("btn1").onclick = crearDiv;
+
+			$.getElementById("btn2").onclick = function(){
+				while(c.childElementCount-1 && c.getElementsByClassName("divCreado")[0]){
+					c.removeChild( c.getElementsByClassName("divCreado")[0] );
+				}
+			}
+		})();
+	</script>
+
+
+</body>
+</html>

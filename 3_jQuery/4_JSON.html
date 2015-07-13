@@ -1,0 +1,100 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#result{
+			margin:0 auto;
+			width:60%;
+			border:solid 2px #333;
+			padding: 30px;
+			min-height:200px;
+		}
+		p.hijos{
+			margin-left:25px;
+			border-bottom:solid 2px #999;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="result"></div>
+
+	<script>
+		(function(){
+
+			var persona = {
+				nombre:"carlos",
+				apellido:"rojas",
+				edad:30
+			};
+
+			var personas = [
+				{
+					nombre:"carlos",
+					apellido:"rojas",
+					edad:30,
+					saludar:function(){
+						return "Hola mi nombre es "+this.nombre;	
+					}
+				},	
+				{
+					nombre:"milena",
+					apellido:"ramirez",
+					edad:25
+				},
+				{
+					nombre:"andres",
+					apellido:"perez",
+					edad:15
+				},
+				{
+					nombre:"laura",
+					apellido:"romero",
+					edad:45,
+					hijos:[
+						{
+							nombre:"camilo",
+							apellido:"acero",
+							edad:15
+						},
+						{
+							nombre:"maria",
+							apellido:"acero",
+							edad:17
+						}
+					]
+				},
+			];
+
+
+			(function(){
+				var div = document.getElementById("result");
+				var resultado = "";
+				for(i in personas){
+					if(personas[i].saludar){
+						resultado += personas[i].saludar()+"<br>";	
+					}else{
+						resultado += personas[i].nombre+"<br>";
+					}
+					resultado += personas[i].apellido+"<br>";
+					resultado += personas[i].edad+"<hr>";
+					if(personas[i].hijos){
+						for(j in personas[i].hijos){
+							resultado += '<p class="hijos">';
+							resultado += personas[i].hijos[j].nombre+"<br>";
+							resultado += personas[i].hijos[j].apellido+"<br>";
+							resultado += personas[i].hijos[j].edad;
+							resultado += "</p>";
+						}
+					}
+				}
+				div.innerHTML = resultado;
+
+			})();
+
+
+		})();
+	</script>
+</body>
+</html>

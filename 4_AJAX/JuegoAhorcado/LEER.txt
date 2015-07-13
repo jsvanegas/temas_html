@@ -1,0 +1,5 @@
+Esta carpeta se debe abrir como un sitio Web de ASP.NET.
+
+Contiene ejemplos de AJAX,
+LESS,
+LocalStorage

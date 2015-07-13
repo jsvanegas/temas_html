@@ -1,0 +1,2 @@
+Estos ejercicios se deben ejecutar desde un servidor de aplicación o como archivos de un proyecto Web de ASP.NET. 
+

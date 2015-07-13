@@ -1,0 +1,82 @@
+<html>
+<head>
+	<title></title>
+	<script src="script/jquery-1.7.2.min.js"></script>
+
+	<style type="text/css">
+
+		div#contenedor{
+			/*centrar*/
+			margin:0 auto;
+			border:solid 2px #333;
+			width:90%;
+			min-height:100px;
+		}
+
+		.divCreado{
+			width:300px;
+			height:100px;
+			background-color: #F00;
+			margin:10px;
+			float:left;
+		}
+
+		.divCreado h2{
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-o-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		.divCreado:hover{
+			background-color: #0A0;
+			cursor:pointer;
+		}
+
+		.limpiar{
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<input id="btn1" value="Crear Div" type="button">
+	<input id="btn2" value="Limpiar Divs" type="button">
+	<div id="contenedor">
+		<hr class="limpiar">
+	</div>
+	<script type="text/javascript">
+		(function() {
+
+			$('#btn1').on('click', function(){
+				//$('#contenedor')
+					//.prepend( 
+						$('<div>')
+							.addClass('divCreado')
+							.attr('data-count', '0')
+							.append( 
+								$('<h2>') 
+							)
+							.on('click', function(){ 
+								var c = parseInt($(this).data('count'))+1;
+								$(this)
+									.find('h2')
+										.text('Clickeado: '+c+' veces')
+									.parent()
+										.data('count', c);
+							})
+							.insertBefore('#contenedor hr.limpiar');
+				//	);
+			});
+
+			$('#btn2').on('click', function(){
+				$('#contenedor div.divCreado').remove();
+			});
+
+
+		})();
+	</script>
+
+
+</body>
+</html>

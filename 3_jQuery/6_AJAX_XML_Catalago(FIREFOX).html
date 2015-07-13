@@ -1,0 +1,98 @@
+<html>
+<head>
+	<title></title>
+	<script src="script/jquery-1.7.2.min.js"></script>
+	<style type="text/css">
+		#contenedor{
+			margin:0 auto;
+			border: solid 1px #333;
+			width:80%;
+
+		}
+
+		#catalogo{
+			padding: 30px;
+			margin-bottom:15px;
+		}
+
+		.producto{
+			height:150px;
+			width:100px;
+			padding: 5px 10px 15px 10px;
+
+			float: left;
+			margin-right:5px;
+		}
+
+		.producto:hover{
+			border:solid 2px #999;
+			cursor: pointer;
+			height:146px;
+			width:96;
+		}
+
+		.producto img{
+			width:60px;
+			height:auto;
+		}
+
+		.limpiar{
+			clear: both;
+			opacity: 0;
+			-moz-opacity: 0;
+			filter:alpha(opacity=0);
+		}
+
+		#detalle{
+			border-top:dashed 2px #999;
+			padding: 30px;
+		}
+	</style>
+</head>
+<body>
+	<h2>Ejemplo de AJAX con jQuery y XML - Si este documento no se ejecuta desde un servidor de aplicación se recomienda abrirlo con Firefox</h2>
+	<div id="contenedor">
+		<div id="catalogo">
+			<hr class="limpiar">
+		</div>
+		<div id="detalle">
+			<h2></h2>
+			<img >
+		</div>
+	</div>
+
+	<script>
+		(function(){
+			$.get('catalog.xml', function(xml){
+				$(xml).find('product').each(function(i, celular){
+					var _celular = $(celular);
+
+					$('<div>')
+						.addClass('producto')
+						.append(
+							$('<img>')
+								.attr(
+									{
+										src:'pic/'+ _celular.find('image').text(),
+										alt:_celular.find('name').text()
+									}
+								)
+						)
+						.on('click', function(){
+							$('#detalle').find('img').attr(
+									{
+										src:'pic/'+ _celular.find('image').text(),
+										alt:_celular.find('name').text()
+									}
+								).siblings('h2')
+									.text(_celular.find('name').text());
+						})
+						.insertBefore('#catalogo hr.limpiar');
+				});
+			});
+		})();
+
+	</script>
+
+</body>
+</html>
